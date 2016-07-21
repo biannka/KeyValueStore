@@ -17,7 +17,7 @@
 	
 	template<class T>
 	void LinkedList<T>::copy(const LinkedList<T> & other){
-		item<T> * current = new (nothrow)item<T>;//current element of new list
+		item<T> * current = new (nothrow)item<T>;//current Elements of new list
 	if (current == NULL && other.getStart()==NULL)
 	{
 		cout << "Error!" << endl;
@@ -27,15 +27,15 @@
 	current->value=other.start->value;//get content of object.start
 	end = start = current;
 
-	Item * temp = other.start;//iterating element of object
+	Element * temp = other.start;//iterating Elements of object
 	if (current != NULL)
 	{
 		while (temp->next != NULL)
 		{
 			current->next = new (nothrow)item;//create new node for our next
-			current = current->next;//come in our new element
+			current = current->next;//come in our new Elements
 			
-			temp = temp->next;//get next element from object
+			temp = temp->next;//get next Elements from object
 
 			current->value = temp->value;
 			
@@ -47,7 +47,7 @@
 	
 	template<class T>
 	void LinkedList<T>::print()const{
-		Item<T>* nextItem  = start;
+		Element<T>* nextItem  = start;
 
 		while(nextItem != NULL){
 
@@ -59,7 +59,7 @@
 	template<class T>
 	void LinkedList<T>::insertBack(T newValue){
 
-		Item<T>* newItem = new (nothrow)item<T>;
+		Element<T>* newItem = new (nothrow)item<T>;
 		newItem ->value = newValue;
 		newItem->next = NULL;
 
@@ -82,7 +82,7 @@
 	template<class T>
 	void LinkedList<T>::insertFront(T newValue){
 
-		Item<T>* newItem = new (nothrow)item<T>;
+		Element<T>* newItem = new (nothrow)item<T>;
 
 		if (newItem == NULL){
 			cout << "Error: memory could not be allocated";
@@ -97,7 +97,7 @@
 	template<class T>
 	void LinkedList<T>::deleteElem(int pos){
 
-		Item<T>* temp = new (nothrow)item;
+		Element<T>* temp = new (nothrow)item;
 		temp = start;
 		int i = 0;
 
@@ -115,7 +115,7 @@
 	int LinkedList<T>::getSize()const{
 
 		int counter = 0;
-		Item<T>* temp = new (nothrow)item;
+		Element<T>* temp = new (nothrow)item;
 		temp = start;
 
 		if (temp == NULL){
@@ -133,17 +133,18 @@
 	}
 	
 	template<class T>
-	Item<T>* LinkedList<T>::getStart()const{
+	Element<T>* LinkedList<T>::getStart()const{
 		return start;
 	}
 	
 	template<class T>
-	Item<T>* LinkedList<T>::getEnd()const{
+	Element<T>* LinkedList<T>::getEnd()const{
 		return end;
 	}
 	
 	template<class T>
-	bool LinkedList<T>::isEmpty()const{
+	bool LinkedList<T>::isEmpty()
+	{
 		if(start == NULL || end == NULL)
 			return true;
 		else
@@ -158,12 +159,12 @@
 	template<class T>
 	void LinkedList<T>::free(){
 
-		Item<T> * toDel = start;
+		Element<T> * toDel = start;
 
 		if(toDel != NULL) {//if list is not empty
 			while(toDel != NULL){
 
-				Item<T>* p = toDel;
+				Element<T>* p = toDel;
 				toDel = toDel->next;
 				delete p;
 			}
@@ -173,13 +174,3 @@
 
 	}
 
-	int main(){
-		
-		
-		LinkedList<char*> list;
-		list.insertBack("2");
-		list.insertFront("1");
-		list.print();
-
-		return 0;
-	}

@@ -77,11 +77,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Hash.cpp" />
-    <ClCompile Include="LinkedList.cpp" />
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Hash.h" />
+    <ClInclude Include="HelpFunctions.h" />
     <ClInclude Include="LinkedList.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

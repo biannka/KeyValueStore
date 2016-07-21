@@ -1,31 +1,34 @@
 #ifndef _HASH_H_
 #define _HASH_H_
 
-#include <vector>
-using namespace std;
-#include<cassert>
 #include "LinkedList.h"
+#include <vector>
+#include<cassert>
 
-struct Element
+struct Elements
 {
-	bool isEmpty;
-	LinkedList<char*> element;
-
+	LinkedList<char*> elements;
 };
 
 class Hash 
 {
 public:
 	Hash();
+	Hash(size_t);
 	~Hash();
 
-	char* Store(const char* pBlock, size_t Size);
+	int Store(char* pBlock, size_t Size);
 	bool Load(const char* pKey, char*& pBlock, size_t& Size);
 	bool Erase(const char* pKey);
 
 private:
-	vector<Element> hashTable;
+	vector<Elements*> hashTable;//taking the pointers here
 	int hashFunction(const char* pBlock);
+	bool isBlockAlreadyAdded(char* pBlock, int key);
+	bool isTaken(int);
+	void destroy();
+
+	size_t size;
 };
 
 #endif
